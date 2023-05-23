@@ -3,6 +3,7 @@ package com.driver;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -69,19 +70,20 @@ public class MovieRepository {
         for(Movie movie:deletedMovie){
             movieList.remove(movie);
         }
-        directorList.remove(director);
         movieDirectorPair.remove(director);
+        directorList.remove(director);
     }
 
     public void deleteAllDirectors() {
-        for (Director director:directorList){
+        for (Director director:directorList) {
             List<Movie> deletedMovie=movieDirectorPair.get(director);
 
             for(Movie movie:deletedMovie){
                 movieList.remove(movie);
             }
             movieDirectorPair.remove(director);
-            directorList.remove(director);
         }
+       directorList.clear();
+
     }
 }
