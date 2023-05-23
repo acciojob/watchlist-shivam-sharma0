@@ -75,8 +75,13 @@ public class MovieRepository {
 
     public void deleteAllDirectors() {
         for (Director director:directorList){
-            deleteDirectorByName(director.getName());
-        }
+            List<Movie> deletedMovie=movieDirectorPair.get(director);
 
+            for(Movie movie:deletedMovie){
+                movieList.remove(movie);
+            }
+            movieDirectorPair.remove(director);
+            directorList.remove(director);
+        }
     }
 }
